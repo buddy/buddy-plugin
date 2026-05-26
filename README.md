@@ -17,12 +17,11 @@ Plugin and skill for seamless integration with Buddy.works — compatible with C
 
 **Prerequisites**
 
-1. **Claude Code CLI** — Install from [claude.ai/claude-code](https://claude.ai/claude-code)
-2. **Buddy CLI (bdy)** — Installed automatically via plugin or manually:
+1. **Buddy CLI (bdy)** — Installed automatically via plugin or manually:
    ```bash
    sudo npm install -g bdy
    ```
-3. **Buddy Account** — Sign up at [buddy.works](https://buddy.works)
+2. **Buddy Account** — Sign up at [buddy.works](https://buddy.works)
 
 **Plugin for Claude Code** — from marketplace (recommended):
 
