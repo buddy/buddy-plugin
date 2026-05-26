@@ -61,6 +61,10 @@ bdy login
 
 # Or use token
 bdy login --token YOUR_TOKEN --workspace YOUR_WS --region us
+
+# Link your project to a Buddy project
+cd any-of-yours-project
+bdy proj link
 ```
 
 ### 2. Deploy an Application
