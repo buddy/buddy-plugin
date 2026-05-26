@@ -29,14 +29,14 @@ Claude Code plugin for seamless integration with Buddy.works. Deploy application
 **From Plugin Marketplace (recommended)**
 
 ```bash
-claude plugin marketplace add sztwiorok/buddy-plugin
+claude plugin marketplace add buddy/buddy-plugin
 claude plugin install buddy@buddy-plugin
 ```
 
 **Development/Testing**
 
 ```bash
-git clone https://github.com/sztwiorok/buddy-plugin.git ~/buddy-plugin
+git clone https://github.com/buddy/buddy-plugin.git ~/buddy-plugin
 cd ~/my-app
 claude --plugin-dir ~/buddy-plugin
 ```
