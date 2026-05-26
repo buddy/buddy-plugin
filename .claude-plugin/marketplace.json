@@ -1,7 +1,7 @@
 {
-  "name": "buddy",
+  "name": "buddy-plugin",
   "owner": {
-    "name": "Rafal Sztwiorok"
+    "name": "Buddy"
   },
   "metadata": {
     "description": "Claude Code integration with Buddy.works for managing sandboxes, artifacts, tunnels, domains, distributions, and pipelines",
