@@ -1,6 +1,6 @@
-# Buddy Plugin for Claude Code
+# Buddy Plugin
 
-Claude Code plugin for seamless integration with Buddy.works. Deploy applications, publish artifacts, expose localhost services, manage domains, distributions, and CI/CD pipelines.
+Plugin and skill for seamless integration with Buddy.works — compatible with Claude Code and other AI agents that support skills. Deploy applications, publish artifacts, expose localhost services, manage domains, distributions, and CI/CD pipelines.
 
 ## Features
 
