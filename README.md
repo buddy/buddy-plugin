@@ -15,7 +15,7 @@ Plugin and skill for seamless integration with Buddy.works — compatible with C
 
 ## Installation
 
-### Prerequisites
+**Prerequisites**
 
 1. **Claude Code CLI** — Install from [claude.ai/claude-code](https://claude.ai/claude-code)
 2. **Buddy CLI (bdy)** — Installed automatically via plugin or manually:
@@ -24,16 +24,14 @@ Plugin and skill for seamless integration with Buddy.works — compatible with C
    ```
 3. **Buddy Account** — Sign up at [buddy.works](https://buddy.works)
 
-### Install Plugin (Claude Code)
-
-**From Plugin Marketplace (recommended)**
+**Plugin for Claude Code** — from marketplace (recommended):
 
 ```bash
 claude plugin marketplace add buddy/buddy-plugin
 claude plugin install buddy@buddy-plugin
 ```
 
-**Development/Testing**
+Or for development/testing:
 
 ```bash
 git clone https://github.com/buddy/buddy-plugin.git ~/buddy-plugin
@@ -41,9 +39,7 @@ cd ~/my-app
 claude --plugin-dir ~/buddy-plugin
 ```
 
-### Install Skills (Any agent: Claude Code, Cursor, Codex, Gemini CLI and 51 more)
-
-The Buddy skills can also be installed standalone into any agent that supports the Skills format:
+**Skill for any agent** (Cursor, Codex, Gemini CLI and 51 more):
 
 ```bash
 npx skills add buddy/buddy-plugin
@@ -123,41 +119,5 @@ Use the provided public URL for webhook configuration (Stripe, GitHub, etc.).
 ```
 
 Each gets its own deployment and public URL.
-
-## Configuration
-
-### Buddy CLI
-
-```bash
-# Global
-bdy login -w workspace -p project --region eu
-
-# Environment variables
-export BUDDY_TOKEN="your-token"
-export BUDDY_WORKSPACE="your-workspace"
-```
-
-## Troubleshooting
-
-### "Not authenticated with Buddy"
-
-Run `bdy login` in a separate terminal. Credentials persist across sessions.
-
-### Application not accessible via public URL
-
-Ensure your app binds to `0.0.0.0`, not `127.0.0.1`:
-
-```javascript
-app.listen(PORT, '0.0.0.0');        // Node.js
-```
-```python
-app.run(host='0.0.0.0', port=5000)  # Flask
-```
-
-### Tunnel connection refused
-
-- Verify app is running: `lsof -i :[port]`
-- Test locally first: `curl http://localhost:[port]`
-
 
 
