@@ -24,7 +24,7 @@ Claude Code plugin for seamless integration with Buddy.works. Deploy application
    ```
 3. **Buddy Account** — Sign up at [buddy.works](https://buddy.works)
 
-### Install Plugin
+### Install Plugin (Claude Code)
 
 **From Plugin Marketplace (recommended)**
 
@@ -40,6 +40,16 @@ git clone https://github.com/buddy/buddy-plugin.git ~/buddy-plugin
 cd ~/my-app
 claude --plugin-dir ~/buddy-plugin
 ```
+
+### Install Skills (Any agent: Claude Code, Cursor, Codex, Gemini CLI and 51 more)
+
+The Buddy skills can also be installed standalone into any agent that supports the Skills format:
+
+```bash
+npx skills add buddy/buddy-plugin
+```
+
+This installs only the `buddy` skill (without Claude Code-specific commands), making Buddy deployment knowledge available to any compatible agent.
 
 ## Quick Start
 
