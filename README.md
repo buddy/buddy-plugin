@@ -17,7 +17,7 @@ Plugin and skill for seamless integration with Buddy.works — compatible with C
 
 **Prerequisites**
 
-1. **Buddy CLI (bdy)** — Installed automatically via plugin or manually:
+1. **Buddy CLI (bdy)** 
    ```bash
    sudo npm install -g bdy
    ```
