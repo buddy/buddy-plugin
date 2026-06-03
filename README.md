@@ -1,54 +1,44 @@
 # Buddy Plugin
 
-Plugin and skill for seamless integration with Buddy.works — compatible with Claude Code and other AI agents that support skills. Deploy applications, publish artifacts, expose localhost services, manage domains, distributions, and CI/CD pipelines.
+This plugin lets coding agents deploy applications, publish artifacts, expose localhost services, and manage domains, distributions, and CI/CD pipelines and workflows on the Buddy Works platform.
 
 ## Features
 
 ### Skill
 
-- **buddy** — Consolidated skill covering sandbox deployment, artifacts, tunnels, domains, distributions, and pipelines
+- **buddy** — Consolidated skill covering sandboxes, artifacts, tunnels, domains, distributions, and pipelines.
 
 ### Commands
 
-- `/deploy [name] [path]` — Deploy application (auto-detects static vs dynamic)
+- `/deploy [name] [path]` — Deploy static website or server-side application
 - `/expose [port]` — Create Buddy tunnel for locally running application
 
 ## Installation
 
-**Prerequisites**
+**Install Buddy CLI (bdy)**
 
-1. **Buddy CLI (bdy)** 
-   ```bash
-   sudo npm install -g bdy
-   ```
-2. **Buddy Account** — Sign up at [buddy.works](https://buddy.works)
+```bash
+sudo npm install -g bdy
+```
 
-**Plugin for Claude Code** — from marketplace (recommended):
+**Install plugin for Claude Code**
 
 ```bash
 claude plugin marketplace add buddy/buddy-plugin
 claude plugin install buddy@buddy-plugin
 ```
 
-Or for development/testing:
-
-```bash
-git clone https://github.com/buddy/buddy-plugin.git ~/buddy-plugin
-cd ~/my-app
-claude --plugin-dir ~/buddy-plugin
-```
-
-**Skill for any agent** (Cursor, Codex, Gemini CLI and 51 more):
+**Install skill for other coding agents**
 
 ```bash
 npx skills add buddy/buddy-plugin
 ```
 
-This installs only the `buddy` skill (without Claude Code-specific commands), making Buddy deployment knowledge available to any compatible agent.
+This installs only the `buddy` skill (without Claude Code-specific commands), making Buddy Works platform knowledge available to any compatible agent.
 
 ## Quick Start
 
-### 1. Authenticate with Buddy
+### 1. Authenticate with Buddy Works
 
 ```bash
 # Interactive login (recommended — run in separate terminal)
@@ -57,8 +47,8 @@ bdy login
 # Or use token
 bdy login --token YOUR_TOKEN --workspace YOUR_WS --region us
 
-# Link your project to a Buddy project
-cd any-of-yours-project
+# Link directory with a Buddy Works project
+cd your-project
 bdy proj link
 ```
 
@@ -69,16 +59,16 @@ bdy proj link
 ```
 
 Claude will auto-detect your project type:
-- **Static site** (HTML/CSS/JS) → published as a Buddy Artifact with versioned URL
-- **Dynamic app** (Node.js, Python, Go, etc.) → deployed to a Buddy Sandbox with public endpoint
+- **Static site** (HTML/CSS/JS) → published as a versioned Buddy Works artifact with a public URL.
+- **Server-side application** (Node.js, Python, Go, etc.) → deployed to a Buddy Works sandbox with a public endpoint.
 
-### 3. Expose Localhost
+### 3. Expose Localhost Port
 
 ```
 /expose
 ```
 
-Claude will detect your running service and create a Buddy tunnel with a public URL.
+Claude will detect your running service and create a Buddy Works tunnel with a public URL.
 
 ## Usage Examples
 
@@ -88,7 +78,7 @@ Claude will detect your running service and create a Buddy tunnel with a public 
 /deploy my-api
 ```
 
-Claude deploys with auto-detected dependencies, start command, port, and public HTTPS endpoint.
+Deploys an app with auto-detected dependencies, start command, port, and public HTTPS endpoint.
 
 ### Deploy Static Site
 
@@ -96,7 +86,7 @@ Claude deploys with auto-detected dependencies, start command, port, and public 
 /deploy my-site ./dist
 ```
 
-Claude publishes your build output as a versioned Buddy Artifact with a public URL.
+Publishes your build output as a versioned Buddy Works artifact with a public URL.
 
 ### Expose Local API for Webhook Testing
 
@@ -108,7 +98,7 @@ npm run dev     # Start your API
 /expose 3000
 ```
 
-Use the provided public URL for webhook configuration (Stripe, GitHub, etc.).
+Returns a public URL to your locally hosted service.
 
 ### Deploy Multiple Apps from Monorepo
 
@@ -118,5 +108,3 @@ Use the provided public URL for webhook configuration (Stripe, GitHub, etc.).
 ```
 
 Each gets its own deployment and public URL.
-
-
