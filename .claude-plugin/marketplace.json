@@ -4,7 +4,7 @@
     "name": "Buddy"
   },
   "metadata": {
-    "description": "Claude Code integration with Buddy.works for managing sandboxes, artifacts, tunnels, domains, distributions, and pipelines",
+    "description": "AI agent integration with Buddy.works for managing sandboxes, artifacts, tunnels, domains, distributions, and pipelines",
     "version": "1.0.0"
   },
   "plugins": [
@@ -12,7 +12,7 @@
       "name": "buddy",
       "source": "./",
       "strict": false,
-      "description": "Claude Code integration with Buddy.works for managing sandboxes, artifacts, tunnels, domains, distributions, and pipelines",
+      "description": "AI agent integration with Buddy.works for managing sandboxes, artifacts, tunnels, domains, distributions, and pipelines",
       "version": "0.2.0",
       "author": {
         "name": "Rafal Sztwiorok"
