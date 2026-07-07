@@ -28,7 +28,7 @@ Cloud environments for dynamic apps (servers, databases, background processes).
 ### Workflow
 
 1. Create: `bdy sandbox create -i <name> --resources 2x4 --wait-for-running`
-2. Copy files: `bdy sandbox cp ./src <name>:/app --ignore "node_modules/**" ".git/**" > /dev/null 2>&1`
+2. Copy files: `bdy sandbox cp ./src <name>:/app --ignore "node_modules/**" ".git/**" > /dev/null`
 3. Install deps: `bdy sandbox exec command <name> "cd /app && npm install" --wait`
 5. Start app via `app add` (NOT exec — gives you status/logs/restart):
    `bdy sandbox app add <name> "cd /app && npm start -- -H 0.0.0.0"`
@@ -49,13 +49,13 @@ Cloud environments for dynamic apps (servers, databases, background processes).
 Two types of artifacts:
 
 - **BUCKET** (default) — versioned file hosting with public URLs. Use for static sites, build outputs, downloadable files
-- **CONTAINER** — Docker registry. Use for Docker images. Authenticate with `bdy artifact docker login`, then push/pull with standard `docker` commands
+- **CONTAINER** — Docker registry. Use for Docker images. Ask the user to run `bdy artifact docker login` in a **separate terminal** (AI cannot handle interactive credentials), then push/pull with standard `docker` commands
 
 ### BUCKET Workflow
 
 1. Build if needed: `npm run build`
 2. Create artifact: `bdy artifact create <name>` (default type is BUCKET)
-   - Auth is set on creation, not per-version — ask about auth first (HTTP Basic `-a user:pass` / Buddy `-b` / None)
+   - Auth is set on creation, not per-version — ask about auth first (HTTP Basic `-a` / Buddy `-b` / None)
 3. Publish with version: `bdy artifact publish <name>@1.0.0 ./dist`
    - Without version: `bdy artifact publish <name> ./dist` → creates `latest` version
 4. Get URL: `bdy artifact version get <name> <version>`
@@ -79,7 +79,7 @@ Expose local services to the internet via secure tunnels.
 
 - **ALWAYS** use `run_in_background: true` when running tunnel commands — they block execution
 - **ALWAYS** ask about authentication via AskUserQuestion before creating HTTP tunnels:
-  - HTTP Basic Auth → `-a user:pass`
+  - HTTP Basic Auth → `-a`
   - Buddy Auth → `--buddy`
   - No auth → no flag
 - For Docker: verify the app binds to `0.0.0.0`

@@ -40,12 +40,14 @@ This installs only the `buddy` skill (without Claude Code-specific commands), ma
 
 ### 1. Authenticate with Buddy Works
 
+Run authentication yourself in a **separate terminal** — never have the agent enter tokens or passwords, and avoid pasting secrets into shared sessions or chat.
+
 ```bash
 # Interactive login (recommended — run in separate terminal)
 bdy login
 
-# Or use token
-bdy login --token YOUR_TOKEN --workspace YOUR_WS --region us
+# Or use a token (keep it out of shell history; use an env var / CI secret)
+bdy login --token "$BUDDY_TOKEN" --workspace YOUR_WS --region us
 
 # Link directory with a Buddy Works project
 cd your-project
