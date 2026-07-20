@@ -12,6 +12,10 @@ This plugin lets coding agents deploy applications, publish artifacts, expose lo
 
 - `/deploy [name] [path]` — Deploy static website or server-side application
 - `/expose [port]` — Create Buddy tunnel for locally running application
+- `/status [name]` — Overview of running sandboxes, static sites (artifacts), tunnels, and pipeline runs
+- `/logs [name] [app-id]` — Show status and logs of a deployed app or pipeline run, diagnose failures
+- `/domain [target] [domain]` — Attach a custom or free Buddy domain to a deployment
+- `/ci [pipeline]` — Run a CI/CD pipeline and watch the result, or set up a new one for the project
 
 ## Installation
 

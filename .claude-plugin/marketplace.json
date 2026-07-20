@@ -13,7 +13,7 @@
       "source": "./",
       "strict": false,
       "description": "AI agent integration with Buddy.works for managing sandboxes, artifacts, tunnels, domains, distributions, and pipelines",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "Rafal Sztwiorok"
       },
