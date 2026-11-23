@@ -4,6 +4,9 @@ description: >-
   Deploy apps to Buddy sandboxes, publish artifacts, create tunnels, manage domains,
   configure distributions, and run CI/CD pipelines using `bdy` CLI. Triggers on: deploy,
   sandbox, tunnel, expose, artifact, static site, publish, domain, distribution, pipeline, CI/CD.
+  Also for looking at a pull request without acting on it: show / open PR #N, list PRs, what
+  changed in a PR. Reviewing a PR → pr-review skill; opening one or fixing review comments →
+  pr-author skill.
 ---
 
 # Buddy Platform
@@ -132,3 +135,22 @@ bdy pipeline run logs <identifier> <id> <action-id>  # View logs
 ```
 
 Run `bdy pipeline --help` for full options (variables, scheduling, YAML config, etc.).
+
+## Pull requests: look only (`bdy pr`)
+
+For "show / open PR #N", "what changed in PR #N", "list PRs" – read only, no review, no comments,
+no verdict (`bdy pr review start` already records a review, so do not run it here).
+
+```bash
+bdy context show git             # project from the origin remote of this Buddy clone (no network); if it resolves, add --context git
+bdy context show                 # otherwise: workspace / project the CLI will use and where they come from (no network)
+bdy pr ls                        # open pull requests
+bdy pr get <N>                   # summary: header, reviews, threads, files, activity
+bdy pr file ls <N>               # changed files with size and triage
+bdy pr diff <N> <path...> --no-mark-viewed   # diff of files, without marking them as viewed
+```
+
+Pull requests live in a project: if the context has no project or the PR is not found, ask the
+user for the workspace and project and pass `-w <ws> -p <project>`. Give the user the PR link
+(`pull_request.html_url` in `bdy pr get <N> --format json`). To review it, use the pr-review skill; to open
+one or fix review comments, the pr-author skill.

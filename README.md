@@ -7,6 +7,12 @@ This plugin lets coding agents deploy applications, publish artifacts, expose lo
 ### Skill
 
 - **buddy** — Consolidated skill covering sandboxes, artifacts, tunnels, domains, distributions, and pipelines.
+- **pr-review** — Reviewer role: reviews a pull request through `bdy pr` (no checkout), opens line threads, verifies fixes on re-review and gives a verdict.
+- **pr-author** — Author role: opens a pull request, fixes the code for review threads, pushes and resolves the threads (fixed / by design / won't fix).
+
+### Agents
+
+- **pr-batch-reviewer** — Reviews one batch of a large pull request in parallel and returns findings to the reviewer.
 
 ### Commands
 
@@ -16,6 +22,8 @@ This plugin lets coding agents deploy applications, publish artifacts, expose lo
 - `/logs [name] [app-id]` — Show status and logs of a deployed app or pipeline run, diagnose failures
 - `/domain [target] [domain]` — Attach a custom or free Buddy domain to a deployment
 - `/ci [pipeline]` — Run a CI/CD pipeline and watch the result, or set up a new one for the project
+- `/review <pr> [--auto]` — Review a pull request; asks whether to preview findings first, `--auto` posts directly
+- `/pr [pr] [--auto]` — Open a pull request from the current branch, or address the review feedback on it
 
 ## Installation
 
