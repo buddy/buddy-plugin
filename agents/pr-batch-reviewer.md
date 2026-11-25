@@ -22,12 +22,19 @@ Input from the main reviewer: PR number `N`, version `vK`, batch number `B`, the
    the whole batch does not fit in one tool output. If an output is still cut to a preview and
    saved to a file, read that file to the end before you judge. Read **all** of it; do not stop
    early – an unread file is a failed batch. Open a single file with `--full` for more context.
-3. Look for real problems: wrong logic, broken edge cases, security issues, races, resource
-   leaks, API / contract breaks, tests that no longer test what they claim. Check the existing
-   threads shown in each diff – do not report what is already reported. Skip style nits,
-   preferences, and behaviour changes the PR description states as intended. A short list of
-   real problems beats a long list of maybes.
-4. Return a list, one item per problem **and place**: when fixing a problem needs changes in
+3. Look for real problems: wrong logic, broken edge cases, races, resource leaks, API /
+   contract breaks, tests that no longer test what they claim. Check the existing threads
+   shown in each diff – do not report what is already reported. Skip style nits, preferences,
+   and behaviour changes the PR description states as intended. A short list of real problems
+   beats a long list of maybes.
+4. Then read the changed code once more as an attacker. Where does input from outside (request,
+   headers, uploaded files, env, other services) reach something that trusts it: queries,
+   shell, file paths, URLs the server fetches, HTML output, deserialization, redirects? Is an
+   authorization or validation check removed, weakened or bypassable? Secrets in code or logs,
+   weak randomness or crypto, unbounded input (regex, size, loops) that lets one request
+   exhaust the service? Report a vulnerability only with a concrete attack: who sends what,
+   and what they get.
+5. Return a list, one item per problem **and place**: when fixing a problem needs changes in
    more than one place (the code and a test, a definition and its callers), give one item per
    place that has to change, each naming the others.
 

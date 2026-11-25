@@ -58,6 +58,7 @@ for flags.
      No `pr-batch-reviewer`? Use any subagent you have, with "Reviewing one batch" below as its
      instructions. No subagents at all? Go through the batches yourself, one after another,
      following the same section – finish each batch before the next one.
+   - Judge the files you read yourself by steps 3–4 of "Reviewing one batch" below.
    - Read the rest of the files when they relate to what you found (callers, tests, config).
 3. **Collect the findings** – yours and every subagent's. Subagents read the code you did not:
    **post every finding they return**. Do not drop one because it looks minor to you or because
@@ -95,12 +96,19 @@ For a subagent, or for you when you work through the batches alone.
    about 5k tokens per call; a file bigger than that alone. Read **all** of it before you
    judge. Saving diffs to files without reading them does not count – the problems are found in
    the reading, not in the opening. Open a single file with `--full` when you need more context.
-3. Look for real problems: wrong logic, broken edge cases, security issues, races, resource
-   leaks, API / contract breaks, tests that no longer test what they claim. Skip style nits,
-   personal preferences, behaviour changes the PR description states as intended, and what is
-   already reported in the existing threads. A short list of real problems beats a long list
-   of maybes – this is where findings are filtered, so report only what you would post.
-4. Record each problem as `path`, `line` (new / old), `problem`, `scenario`, `fix`. A problem
+3. Look for real problems: wrong logic, broken edge cases, races, resource leaks, API /
+   contract breaks, tests that no longer test what they claim. Skip style nits, personal
+   preferences, behaviour changes the PR description states as intended, and what is already
+   reported in the existing threads. A short list of real problems beats a long list of
+   maybes – this is where findings are filtered, so report only what you would post.
+4. Then read the changed code once more as an attacker. Where does input from outside (request,
+   headers, uploaded files, env, other services) reach something that trusts it: queries,
+   shell, file paths, URLs the server fetches, HTML output, deserialization, redirects? Is an
+   authorization or validation check removed, weakened or bypassable? Secrets in code or logs,
+   weak randomness or crypto, unbounded input (regex, size, loops) that lets one request
+   exhaust the service? Report a vulnerability only with a concrete attack: who sends what,
+   and what they get.
+5. Record each problem as `path`, `line` (new / old), `problem`, `scenario`, `fix`. A problem
    that needs changes in several places gets one item per place, each naming the others.
    A subagent returns the list and `read: <files read> / <files in the batch>` without posting.
 
